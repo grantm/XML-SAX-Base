@@ -33,6 +33,7 @@ package XML::SAX::Base;
 # version 1.02 - Robin Berjon <robin@knowscape.com>
 # version 1.03 - Matt Sergeant <matt@sergeant.org>
 # version 1.04 - Kip Hampton <khampton@totalcinema.com>
+# version 1.05 - Grant McLean <grantm@cpan.org>
 
 #-----------------------------------------------------#
 # STOP!!!!!
@@ -47,7 +48,7 @@ use strict;
 use vars qw($VERSION);
 use XML::SAX::Exception qw();
 
-$VERSION = '1.04';
+$VERSION = '1.05';
 
 EOHEADER
 

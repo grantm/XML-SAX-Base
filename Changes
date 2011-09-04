@@ -1,5 +1,9 @@
 Revision history for Perl extension XML::SAX::Base.
 
+1.05 Mon Sep 05 2011
+        - Re-released separately from XML-SAX distribution
+        - tweak to suppress benign warning (released 2007-02-08 as part of XML-SAX 0.15)
+
 1.04 Mon Apr 28 23:56:33 2001
         - plugged major memory leak (thanks to Richard Titmuss for the catch and Matt Sergeant for the patch).
 	- added get_handler method (and friends).
