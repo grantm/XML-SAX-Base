@@ -1,17 +1,12 @@
-Whoa, Pilgrim!
+XML::SAX::Base is intended for use as a base class for SAX filter modules
+and XML parsers generating SAX events.
 
-Make sure that the standalone version of XML::SAX::Base is 
-what you want. 
+If you simply wish to build a SAX handler class to 'consume' SAX events you
+do not need to use XML::SAX::Base directly although you will need to install
+XML::SAX.
 
-The standalone Base distribution is only useful for cases
-where you will be generating event streams from non-XML
-data (for example, extracting data from an RDBMS and
-translating it into XML).
-
-If you plan to plug XML parsers into this
-class to generate SAX events then you certainly want the 
-full XML::SAX distribution. Go on, you'll be much happier
-there, trust me.
+This module used to be distributed as part of the XML:SAX distribution but
+is now distributed separately and referenced as a dependency by XML::SAX.
 
 INSTALLATION:
 
@@ -27,8 +22,8 @@ via CPAN shell:
 % perl -MCPAN -e shell
 % install XML::SAX::Base
 
-The rest of this file consists of the fine XML::SAX::Base documentation 
-contributed by Robin Berjon. 
+The rest of this file consists of the fine XML::SAX::Base documentation
+contributed by Robin Berjon.
 
 Enjoy!
 
