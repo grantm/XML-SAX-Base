@@ -2,6 +2,10 @@ Revision history for Perl extension XML::SAX::Base.
 
 {{$NEXT}}
 
+1.07      2011-09-10 11:35:27 Pacific/Auckland
+        - modify BuildSAXBase.PL to include version stanzas when run manually
+        - make BuildSAXBase.PL harmless unless run with --force option
+
 1.06      2011-09-08 23:10:25 Pacific/Auckland
         - switch distribution to use Dist::Zilla for packaging
         - generate XML/SAX/Base.pm at release time rather than install
