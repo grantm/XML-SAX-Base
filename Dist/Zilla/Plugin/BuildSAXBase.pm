@@ -7,6 +7,14 @@ use Dist::Zilla::File::InMemory;
 sub gather_files {
   my ($self) = @_;
 
+  # Remove manually generated version if it exists
+
+  my $path = File::Spec->catfile("lib", "XML", "SAX", "Base.pm");
+  unlink($path) if -e $path;
+
+
+  # Generate a new in-memory version
+
   require "BuildSAXBase.PL";
   $self->add_file(
     Dist::Zilla::File::InMemory->new(
