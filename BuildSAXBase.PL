@@ -1,14 +1,18 @@
 #!/usr/bin/perl
 #
-# This file is used to generate lib/XML/SAX/Base.pm.  It was adapted from
-# the Makefile.PL when XML::SAX::Base was split back out into its own
-# distribution.
+# This file is used to generate lib/XML/SAX/Base.pm.  There is a pre-generated
+# Base.pm file included in the distribution so you don't need to run this
+# script unless you are attempting to modify the code.
+#
+# The code in this file was adapted from the Makefile.PL when XML::SAX::Base
+# was split back out into its own distribution.
 #
 # You can manually run this file:
 #
 #   perl ./BuildSAXBase.PL
 #
-# or better yet it will be invoked by automatically Dist::Zilla
+# or better yet it will be invoked by automatically Dist::Zilla when building
+# a release from the git repository.
 #
 #   dzil build
 #
@@ -43,6 +47,7 @@ package XML::SAX::Base;
 # version 1.04 - Kip Hampton <khampton@totalcinema.com>
 # version 1.05 - Grant McLean <grantm@cpan.org>
 # version 1.06 - Grant McLean <grantm@cpan.org>
+# version 1.07 - Grant McLean <grantm@cpan.org>
 
 #-----------------------------------------------------#
 # STOP!!!!!
@@ -774,13 +779,66 @@ FOOTER
 
 
 sub write_xml_sax_base {
-
-    my $code = build_xml_sax_base();
+    confirm_forced_update();
 
     my $path = File::Spec->catfile("lib", "XML", "SAX", "Base.pm");
+    save_original_xml_sax_base($path);
+
+    my $code = build_xml_sax_base();
+    $code = add_version_stanzas($code);
+
     open my $fh, ">", $path or die "Cannot write $path: $!";
     print $fh $code;
     close $fh or die "Error writing $path: $!";
     print "Wrote $path\n";
+}
+
+
+sub confirm_forced_update {
+    return if grep { $_ eq '--force' } @ARGV;
+
+    print <<'EOF';
+*** WARNING ***
+
+The BuildSAXBase.PL script is used to generate the lib/XML/SAX/Base.pm file.
+However a pre-generated version of Base.pm is included in the distribution
+so you do not need to run this script unless you intend to modify the code.
+
+You must use the --force option to deliberately overwrite the distributed
+version of lib/XML/SAX/Base.pm
+
+EOF
+
+    exit;
+}
+
+
+sub save_original_xml_sax_base {
+    my($path) = @_;
+
+    return unless -e $path;
+    (my $save_path = $path) =~ s{Base}{Base-orig};
+    return if -e $save_path;
+    print "Saving $path to $save_path\n";
+    rename($path, $save_path);
+}
+
+
+sub add_version_stanzas {
+    my($code) = @_;
+
+    my $version = get_xml_sax_base_version();
+    $code =~ s<^(package\s+(\w[:\w]+).*?\n)>
+              <${1}BEGIN {\n  \$${2}::VERSION = '$version';\n}\n>mg;
+    return $code;
+}
+
+
+sub get_xml_sax_base_version {
+    open my $fh, '<', 'dist.ini' or die "open(<dist.ini): $!";
+    while(<$fh>) {
+        m{^\s*version\s*=\s*(\S+)} && return $1;
+    }
+    die "Failed to find version in dist.ini";
 }
 
