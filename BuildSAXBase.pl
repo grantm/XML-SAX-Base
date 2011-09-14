@@ -48,6 +48,7 @@ package XML::SAX::Base;
 # version 1.05 - Grant McLean <grantm@cpan.org>
 # version 1.06 - Grant McLean <grantm@cpan.org>
 # version 1.07 - Grant McLean <grantm@cpan.org>
+# version 1.08 - Grant McLean <grantm@cpan.org>
 
 #-----------------------------------------------------#
 # STOP!!!!!
