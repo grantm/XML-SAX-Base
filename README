@@ -52,6 +52,8 @@ that might nevertheless be interested in them.
 
 =head1 WRITING SAX DRIVERS AND FILTERS
 
+The Perl Sax API Reference is at L<http://perl-xml.sourceforge.net/perl-sax/>.
+
 Writing SAX Filters is tremendously easy: all you need to do is
 inherit from this module, and define the events you want to handle. A
 more detailed explanation can be found at
