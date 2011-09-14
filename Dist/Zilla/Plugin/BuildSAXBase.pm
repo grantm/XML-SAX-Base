@@ -15,7 +15,7 @@ sub gather_files {
 
   # Generate a new in-memory version
 
-  require "BuildSAXBase.PL";
+  require "BuildSAXBase.pl";
   $self->add_file(
     Dist::Zilla::File::InMemory->new(
       name => 'lib/XML/SAX/Base.pm',
