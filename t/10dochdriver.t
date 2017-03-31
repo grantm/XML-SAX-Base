@@ -3,7 +3,7 @@ BEGIN { plan tests => 10 }
 use XML::SAX::Base;
 use strict;
 use vars qw/%events $meth_count/;
-require "t/events.pl";
+require "./t/events.pl";
 
 # Tests for DocumentHandler classes using a filter
 

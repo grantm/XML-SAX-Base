@@ -2,7 +2,7 @@ use Test;
 BEGIN { plan tests => 12 }
 use XML::SAX::Base;
 use vars qw/%events/;
-require "t/events.pl";
+require "./t/events.pl";
 
 # Tests for ContentHandler classes using a filter
 

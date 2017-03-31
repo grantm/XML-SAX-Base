@@ -3,7 +3,7 @@ BEGIN { plan tests => 3 }
 use XML::SAX::Base;
 use strict;
 use vars qw/%events $meth_count $one_count $two_count/;
-require "t/events.pl";
+require "./t/events.pl";
 
 $meth_count = 0;
 # Tests for in-stream switch of Handler classes.
